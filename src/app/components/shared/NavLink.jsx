@@ -10,7 +10,7 @@ const NavLink = ({ href, children }) => {
   return (
     <Link
       href={href}
-      className="relative px-6 py-2 text-white/90 transition-all duration-300 hover:text-white/90 group"
+      className="relative px-6 py-2 text-white/80 transition-all duration-300 hover:text-white/80 group"
     >
       {children}
 

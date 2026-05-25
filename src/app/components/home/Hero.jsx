@@ -25,7 +25,7 @@ const Hero = () => {
                             </motion.span>
                         </h2>
 
-                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className='text-white/70 leading-7'>
+                        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className='text-white/80 text-lg leading-7 mb-10'>
                             Discover and reserve quiet study rooms, group discussion zones, and collaboration spaces instantly. No more wandering around campus looking for an empty room—secure your study nook in just a few clicks!
                         </motion.p>
                     <div className='flex gap-4'>
