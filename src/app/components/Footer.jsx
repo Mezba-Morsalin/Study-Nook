@@ -56,19 +56,19 @@ const Footer = () => {
 
                         <div className='flex gap-4'>
 
-                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 p-1'>
+                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 transition-all duration-300 hover:bg-linear-to-r hover:from-[#FFD700] hover:via-[#FFC107] hover:to-[#FFB300] hover:text-white hover:scale-110 cursor-pointer p-1'>
                                 <FaFacebook size={25} />
                             </motion.button>
 
-                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 p-1'>
+                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 transition-all duration-300 hover:bg-linear-to-r hover:from-[#FFD700] hover:via-[#FFC107] hover:to-[#FFB300] hover:text-white hover:scale-110 cursor-pointer p-1'>
                                 <FaXTwitter size={25} />
                             </motion.button>
 
-                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 p-1'>
+                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 transition-all duration-300 hover:bg-linear-to-r hover:from-[#FFD700] hover:via-[#FFC107] hover:to-[#FFB300] hover:text-white hover:scale-110 cursor-pointer p-1'>
                                 <FaLinkedin size={25} />
                             </motion.button>
 
-                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 p-1'>
+                            <motion.button whileHover={{ scale: 1.1 }} className='rounded-full bg-[#071228]/70 flex items-center justify-center text-white/70 transition-all duration-300 hover:bg-linear-to-r hover:from-[#FFD700] hover:via-[#FFC107] hover:to-[#FFB300] hover:text-white hover:scale-110 cursor-pointer p-1'>
                                 <FaInstagram size={25} />
                             </motion.button>
 

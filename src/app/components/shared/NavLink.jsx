@@ -16,7 +16,7 @@ const NavLink = ({ href, children }) => {
 
       {/* gradient underline */}
       <span
-        className={`absolute left-0 -bottom-1 h-[3px] w-full rounded-full bg-linear-to-r from-yellow-400 to-amber-600 transition-all duration-300
+        className={`absolute left-0 -bottom-1 h-[3px] w-full rounded-full bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] transition-all duration-300
         ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
       />
     </Link>
