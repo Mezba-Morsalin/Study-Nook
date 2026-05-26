@@ -33,7 +33,7 @@ const Navbar = () => {
 
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className='flex gap-4'>
                         <Link href={'/login'}>
-                            <Button className={'bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] transition-transform duration-300 ease-out hover:scale-105 flex items-center group text-base p-5 hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)]'}>
+                            <Button className={'bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black transition-transform duration-300 ease-out hover:scale-105 flex items-center group text-base p-5 hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)]'}>
                                 Login
                             </Button>
                         </Link>

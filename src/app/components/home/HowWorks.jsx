@@ -2,28 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-
-import quetImg from "../../../../public/assets/question.svg";
 
 import { HiOutlineSearch } from "react-icons/hi";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaGraduationCap } from "react-icons/fa";
+import { LuMoveRight } from "react-icons/lu";
 
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
-  visible: (index) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      delay: index * 0.2,
-    },
-  }),
-};
+import quetImg from "../../../../public/assets/question.svg";
 
 const cards = [
   {
@@ -51,7 +38,8 @@ const HowWorks = () => {
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
@@ -96,27 +84,14 @@ const HowWorks = () => {
             return (
               <motion.div
                 key={index}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                custom={index}
-                whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className="bg-[#061a3a] rounded-2xl p-8 space-y-3 text-center border border-[#335483] hover:shadow-[0_0_40px_rgba(251,191,36,0.18)] transition-all duration-300"
               >
-                <motion.div
-                  whileHover={{
-                    rotate: 8,
-                    scale: 1.1,
-                  }}
-                >
-                  <Icon
-                    className="text-yellow-400 mx-auto"
-                    size={45}
-                  />
-                </motion.div>
+                <Icon className="text-yellow-400 mx-auto" size={45} />
 
                 <h3 className="text-white text-xl font-semibold">
                   {card.title}
@@ -130,6 +105,17 @@ const HowWorks = () => {
           })}
 
         </div>
+
+        {/* Button */}
+        <div className="flex justify-center items-center mt-12">
+          <Link href="/rooms">
+            <button className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-medium transition-transform duration-300 hover:scale-105 flex items-center gap-2 px-6 py-3 rounded-xl hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)]">
+              Explore Rooms
+              <LuMoveRight className="transition-transform group-hover:translate-x-1" />
+            </button>
+          </Link>
+        </div>
+
       </div>
     </section>
   );
