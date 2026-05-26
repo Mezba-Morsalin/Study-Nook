@@ -19,7 +19,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className='bg-[#071228] backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-white'>
+        <div className='bg-[#071228]/80 backdrop-blur-md bg-opacity-80 border-b border-white/10 shadow-white'>
             <div className='w-11/12 lg:w-10/12 mx-auto py-5'>
                 <div className='flex justify-between items-center'>
 

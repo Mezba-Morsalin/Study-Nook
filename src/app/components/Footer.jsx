@@ -22,7 +22,7 @@ const Footer = () => {
     );
 
     return (
-        <div className='bg-[#071228] backdrop-blur-md bg-opacity-80 border border-white/10 shadow-white'>
+        <div className='bg-[#071228] backdrop-blur- bg-opacity-80 border border-white/10 shadow-white'>
 
             <div className='w-11/12 lg:w-10/12 mx-auto py-16'>
                 <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-12'>
