@@ -48,7 +48,6 @@ const FeedBack = () => {
     <section className="bg-[#061a3a] overflow-hidden">
       <div className="w-11/12 lg:w-10/12 mx-auto py-16">
 
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +79,6 @@ const FeedBack = () => {
           </p>
         </motion.div>
 
-        {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
 
           {feedbacks.map((item, i) => (
@@ -111,7 +109,6 @@ const FeedBack = () => {
                   {item.text}
                 </p>
 
-                {/* Stars */}
                 <div className="flex justify-center items-center gap-1 text-[#FFD700]">
                   {Array.from({ length: 5 }).map((_, idx) => (
                     <GoStarFill key={idx} size={15} />
