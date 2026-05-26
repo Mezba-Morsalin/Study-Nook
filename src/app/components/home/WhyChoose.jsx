@@ -2,6 +2,7 @@ import React from 'react';
 import { BsCalendar2CheckFill } from 'react-icons/bs';
 import { FaVolumeMute } from 'react-icons/fa';
 import { GrGroup } from 'react-icons/gr';
+import {  IoIosWifi } from 'react-icons/io';
 import starImg from '../../../../public/assets/Star.svg'
 import Image from 'next/image';
 
