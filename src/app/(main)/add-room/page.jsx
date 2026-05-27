@@ -238,7 +238,7 @@ const AddRoomPage = () => {
 
           <Button
             type="submit"
-            className="w-full rounded-2xl bg-gradient-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold py-7"
+            className="w-full rounded-full bg-linear-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold py-7"
           >
             Add Room
           </Button>

@@ -106,7 +106,7 @@ const HowWorks = () => {
 
         <div className="flex justify-center items-center mt-12">
           <Link href="/rooms">
-            <button className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-medium transition-transform duration-300 hover:scale-105 flex items-center gap-2 px-6 py-3 rounded-xl hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)] cursor-pointer">
+            <button className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-medium transition-transform duration-300 hover:scale-105 flex items-center gap-2 px-6 py-3 rounded-full hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)] cursor-pointer">
               Explore Rooms
               <LuMoveRight className="transition-transform group-hover:translate-x-1" />
             </button>
