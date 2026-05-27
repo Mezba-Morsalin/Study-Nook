@@ -1,12 +1,38 @@
 "use client"
 
+import { authClient } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
-import React from 'react';
-import { Toaster } from 'react-hot-toast';
+import { redirect } from 'next/navigation';
+import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 
 const RegisterPage = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const onSubmitForm = async(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget)
+    const user = Object.fromEntries(formData.entries());
+    console.log(user)
+
+    const {data, error} = await authClient.signUp.email({
+      name : user.name,
+      email : user.email,
+      password : user.password,
+      image : user.image
+    });
+
+    if(error) {
+      toast.error("User Already Exists")
+      return
+    }
+    if(data) {
+      toast.success("Your Registration Successful");
+      redirect("/")
+  }
+}
     return (
          <div className='max-w-7xl mx-auto py-16 px-5 md:px-0'>
            
@@ -23,7 +49,7 @@ const RegisterPage = () => {
 
             <div className='max-w-xl mx-auto text-white bg-white/5 backdrop-blur-md border border-yellow-400/10 shadow-[0_0_40px_rgba(251,191,36,0.08)] p-12 rounded-3xl'>
                 
-                <Form className="flex flex-col gap-5">
+                <Form onSubmit={onSubmitForm} className="flex flex-col gap-5">
 
         <TextField isRequired name="name" type='text'>
           
@@ -73,10 +99,10 @@ const RegisterPage = () => {
         isRequired
         minLength={8}
         name="password"
-        type='password'
+        type={showPassword ? "text" : "password"}
         validate={(value) => {
-          if (value.length < 8) {
-            return "Password must be at least 8 characters";
+          if (value.length < 6) {
+            return "Password must be at least 6 characters";
           }
           if (!/[A-Z]/.test(value)) {
             return "Password must contain at least one uppercase letter";
@@ -94,7 +120,11 @@ const RegisterPage = () => {
           className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
 
-        <span className='absolute top-8.5 right-3 cursor-pointer'></span>
+        <span onClick={()=> setShowPassword(!showPassword)} className='absolute top-8.5 right-3 cursor-pointer'>
+          {
+            showPassword ? <FaEye/> : <FaEyeSlash />
+          }
+        </span>
 
         <Description className='text-white/40'>
           Must be at least 8 characters with 1 uppercase and 1 number
