@@ -7,7 +7,7 @@ import { LuCircleArrowOutUpRight } from "react-icons/lu";
 
 const Room = ({ room }) => {
   return (
-    <div className="group bg-[#061a3a] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/5">
+    <div className="group bg-[#061a3a] rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_40px_rgba(251,191,36,0.18)] transition-all duration-300 border border-white/5">
 
       <div className="relative overflow-hidden">
         <Image src={room?.imageUrl || "/placeholder-room.jpg"} alt="room-images" width={450} height={450} className="w-full h-[220px] object-cover group-hover:scale-105 transition-transform duration-500"/>
