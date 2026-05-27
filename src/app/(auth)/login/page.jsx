@@ -37,7 +37,7 @@ const LoginPage = () => {
 
         <Input
           placeholder="john@example.com"
-          className="rounded-2xl bg-white/5 border border-white/10"
+          className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
 
         <FieldError />
@@ -48,6 +48,7 @@ const LoginPage = () => {
         isRequired
         minLength={8}
         name="password"
+        type='password'
         validate={(value) => {
           if (value.length < 8) {
             return "Password must be at least 8 characters";
@@ -66,7 +67,7 @@ const LoginPage = () => {
         <Input
           type="password"
           placeholder="Enter your password"
-          className="rounded-2xl bg-white/5 border border-white/10"
+          className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
 
         <span className='absolute top-8.5 right-3 cursor-pointer'></span>
