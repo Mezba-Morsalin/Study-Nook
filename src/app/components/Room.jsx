@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaDatabase } from "react-icons/fa";
 import { GrGroup } from "react-icons/gr";
+import { LuCircleArrowOutUpRight } from "react-icons/lu";
 
 const Room = ({ room }) => {
   return (
@@ -56,6 +58,14 @@ const Room = ({ room }) => {
               {facility}
             </span>
           ))}
+        </div>
+        <div className="mt-5">
+          <Link href={`/rooms/${room._id}`}>
+            <button className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-medium transition-transform duration-300 hover:scale-105 flex items-center gap-2 px-4 py-2 rounded-full hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)] cursor-pointer">
+              See More
+              <LuCircleArrowOutUpRight className="transition-transform group-hover:translate-x-1" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
