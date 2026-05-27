@@ -2,12 +2,13 @@
 import { authClient } from '@/lib/auth-client';
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false)
 
   const onSubmitForm = async(e) => {
     e.preventDefault()
@@ -31,6 +32,15 @@ const LoginPage = () => {
     if(data) {
       toast.success("Login Successful")
     }
+  }
+  const handleGoogleLogin = async () => {
+    const user = await authClient.signIn.social({
+      provider : "google",
+      callbackURL : "/"
+    })
+    if (user) {
+        toast.success("Login Successfully With Your Google Account")
+      }
   }
     return (
         <div className='max-w-7xl mx-auto py-16 px-5 md:px-0'>
@@ -74,7 +84,7 @@ const LoginPage = () => {
         isRequired
         minLength={8}
         name="password"
-        type='password'
+        type={showPassword ? "text" : "password"}
         validate={(value) => {
           if (value.length < 8) {
             return "Password must be at least 8 characters";
@@ -96,7 +106,11 @@ const LoginPage = () => {
           className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
 
-        <span className='absolute top-8.5 right-3 cursor-pointer'></span>
+        <span onClick={()=> setShowPassword(!showPassword)} className='absolute top-8.5 right-3 cursor-pointer text-white'>
+          {
+            showPassword ? <FaEye/> : <FaEyeSlash/>
+          }
+        </span>
 
         <Description className='text-white/40'>
           Must be at least 8 characters with 1 uppercase and 1 number
@@ -106,7 +120,7 @@ const LoginPage = () => {
       </TextField>
 
       <div className="flex gap-2">
-        <Button
+        <Button 
           className='w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(251,191,36,0.35)] rounded-2xl py-6'
           type="submit"
         >
@@ -126,7 +140,7 @@ const LoginPage = () => {
     </Form>
 
     <div className='flex justify-center items-center my-5'>
-      <Button
+      <Button onClick={()=> handleGoogleLogin()}
         className='bg-white/5 border border-white/10 text-white hover:border-yellow-400/30 hover:-translate-y-1 transition-all duration-300 rounded-2xl px-6 py-6'
         variant='ghost'
       >

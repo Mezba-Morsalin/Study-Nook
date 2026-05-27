@@ -31,6 +31,15 @@ const RegisterPage = () => {
       toast.success("Your Registration Successful");
       redirect("/")
   }
+};
+const handleGoogleLogin = async () => {
+   const user = await authClient.signIn.social({
+    provider: "google",
+    callbackURL : "/"
+  });
+  if(user) {
+    toast.success("Registration Successfully With Your Google Account")
+  }
 }
     return (
          <div className='max-w-7xl mx-auto py-16 px-5 md:px-0'>
@@ -119,7 +128,7 @@ const RegisterPage = () => {
           className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
 
-        <span onClick={()=> setShowPassword(!showPassword)} className='absolute top-8.5 right-3 cursor-pointer'>
+        <span onClick={()=> setShowPassword(!showPassword)} className='absolute top-8.5 right-3 cursor-pointer text-white'>
           {
             showPassword ? <FaEye/> : <FaEyeSlash />
           }
@@ -157,7 +166,7 @@ const RegisterPage = () => {
 
     <div className='flex justify-center items-center my-5'>
       
-      <Button
+      <Button onClick={()=> handleGoogleLogin()}
         className='bg-white/5 border border-white/10 text-white hover:border-yellow-400/30 hover:-translate-y-1 transition-all duration-300 rounded-2xl px-6 py-6'
         variant='ghost'
       >
