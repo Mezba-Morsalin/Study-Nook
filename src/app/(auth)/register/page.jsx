@@ -23,7 +23,6 @@ const RegisterPage = () => {
       password : user.password,
       image : user.image
     });
-
     if(error) {
       toast.error("User Already Exists")
       return
