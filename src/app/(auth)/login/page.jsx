@@ -101,7 +101,6 @@ const LoginPage = () => {
         <Label className='text-white/90'>Password</Label>
 
         <Input
-          type="password"
           placeholder="Enter your password"
           className="rounded-2xl text-white bg-white/5 border border-white/10"
         />
