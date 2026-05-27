@@ -13,8 +13,12 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const AddRoomPage = () => {
+
+  const router = useRouter()
 
   const categories = [
     { id: "quiet", name: "Quiet Study Room" },
@@ -22,9 +26,12 @@ const AddRoomPage = () => {
     { id: "computer", name: "Computer Lab" },
     { id: "library", name: "Library Zone" },
     { id: "collaboration", name: "Collaboration Zone" },
+    { id: "research", name: "Research Room" },
+    { id: "soloStudy", name: "Solo Study Room" },
+    { id: "discussion", name: "Discussion Room" },
   ];
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm =async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -43,6 +50,25 @@ const AddRoomPage = () => {
     };
 
     console.log(finalData);
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
+      method : 'POST',
+      headers :{
+        "Content-type" : "application/json"
+      },
+      body : JSON.stringify(finalData)
+    })
+
+    const room = await res.json();
+
+    console.log(room)
+
+    if(room) {
+      toast.success("Room Added Successfully");
+      setTimeout(()=> {
+        router.push('/rooms')
+      }, 1000)
+    }
   };
 
   return (
@@ -50,7 +76,7 @@ const AddRoomPage = () => {
       <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(251,191,36,0.08)]">
 
         <div className="mb-10 text-center space-y-3">
-          <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">
             Add New Study Room
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto">
@@ -92,6 +118,18 @@ const AddRoomPage = () => {
                   <ListBox.Item id="collaboration" textValue="Collaboration Zone">
                     Collaboration Zone
                   </ListBox.Item>
+
+                  <ListBox.Item id="research" textValue="Research Room">
+                    Research Room
+                  </ListBox.Item>
+
+                  <ListBox.Item id="soloStudy" textValue="Solo Study Room">
+                    Solo Study Room
+                  </ListBox.Item>
+
+                  <ListBox.Item id="discussion" textValue="Discussion Room">
+                    Discussion Room
+                  </ListBox.Item>
                 </ListBox>
               </Select.Popover>
             </Select>
@@ -104,12 +142,12 @@ const AddRoomPage = () => {
 
             <TextField name="capacity" type="number" isRequired>
               <Label className="text-white mb-2">Capacity</Label>
-              <Input type="number" placeholder="12" className="rounded-2xl" />
+              <Input type="number" placeholder="16" className="rounded-2xl" />
               <FieldError />
             </TextField>
 
-            <TextField name="availableSeats" type="number" isRequired>
-              <Label className="text-white mb-2">Available Seats</Label>
+            <TextField name="SelectFloor" type="number" isRequired>
+              <Label className="text-white mb-2">Select Floor Number</Label>
               <Input type="number" placeholder="8" className="rounded-2xl" />
               <FieldError />
             </TextField>
@@ -206,6 +244,7 @@ const AddRoomPage = () => {
           </Button>
         </form>
       </div>
+      <Toaster/>
     </div>
   );
 };
