@@ -8,7 +8,7 @@ const Room = ({ room }) => {
     <div className="group bg-[#061a3a] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/5">
 
       <div className="relative overflow-hidden">
-        <Image src={room?.imageUrl} alt="room-images" width={450} height={450} className="w-full h-[220px] object-cover group-hover:scale-105 transition-transform duration-500"/>
+        <Image src={room?.imageUrl || "/placeholder-room.jpg"} alt="room-images" width={450} height={450} className="w-full h-[220px] object-cover group-hover:scale-105 transition-transform duration-500"/>
 
         <div className="absolute top-3 right-3 bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">
           <span className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] bg-clip-text text-transparent font-semibold text-sm">
