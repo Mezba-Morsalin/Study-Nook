@@ -7,6 +7,7 @@ import { RiArrowLeftLongFill } from 'react-icons/ri';
 import { FiUsers } from 'react-icons/fi';
 import { LuLayers3 } from 'react-icons/lu';
 import { TbCalendarStats } from 'react-icons/tb';
+import BookRoom from '@/app/components/BookRoom';
 
 const RoomDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -106,11 +107,7 @@ const RoomDetailsPage = async ({ params }) => {
                 <p>Up to {room.capacity} people</p>
               </div>
             </div>
-
-            <Button className=' w-full bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-semibold py-7 rounded-xl hover:scale-[1.02] transition-all duration-300 '
-            >
-              Book Now
-            </Button>
+            <BookRoom room = {room}/>
           </div>
         </div>
       </div>
