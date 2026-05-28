@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import { FaDatabase } from 'react-icons/fa';
 import { GrGroup } from 'react-icons/gr';
+import { LuLayers3 } from 'react-icons/lu';
 
 const FeaturedRoom = ({room}) => {
     return (
@@ -29,7 +29,7 @@ const FeaturedRoom = ({room}) => {
         
                 <div className="flex justify-between text-sm text-white/70">
                   <div className="flex items-center gap-2">
-                    <FaDatabase className="text-yellow-400" />
+                    <LuLayers3 className="text-yellow-400" />
                      <span>
               {room.SelectFloor === "1"
                 ? "1st Floor"
