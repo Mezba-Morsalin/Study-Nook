@@ -15,6 +15,7 @@ import {
 } from "@heroui/react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import CancelBookings from "@/app/components/CancelBookings";
 
 const AddRoomPage = () => {
 
