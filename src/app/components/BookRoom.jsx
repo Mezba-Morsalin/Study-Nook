@@ -66,6 +66,8 @@ const BookRoom = ({ room }) => {
       roomId : room?._id,
       roomName : room?.categoryName,
       roomImage : room?.imageUrl,
+      roomFloor : room?.SelectFloor,
+      roomBuilding : room.buildingName,
 
       bookingDate,
       startTime,
@@ -171,7 +173,6 @@ const BookRoom = ({ room }) => {
                         </div>
                       </div>
                     </div>
-
                     <div>
                       <Label className="text-white mb-2 block">
                         Special Note
