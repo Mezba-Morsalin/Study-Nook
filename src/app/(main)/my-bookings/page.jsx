@@ -11,6 +11,7 @@ import { MdDateRange } from "react-icons/md";
 import { BsStopwatch } from "react-icons/bs";
 import { AiFillDollarCircle } from "react-icons/ai";
 import CancelBookings from "@/app/components/CancelBookings";
+import { Button } from "@heroui/react";
 
 const MyBookingPage = async () => {
   const session = await auth.api.getSession({
@@ -84,11 +85,16 @@ const MyBookingPage = async () => {
 
   return (
     <div className="w-11/12 mx-auto py-10 md:py-16">
-      <div className="mb-8 md:mb-10 space-y-2 md:space-y-4">
+      <div className="flex justify-between flex-col md:flex-row mb-8 md:mb-10 gap-6">
+        <div className=" space-y-2 md:space-y-4">
         <h2 className="text-2xl md:text-3xl text-white">My Bookings</h2>
         <p className="text-white/80 text-sm md:text-base">
           Manage Your Room Bookings And Reservation
         </p>
+      </div>
+      <div>
+        <Link href={'/add-room'}><Button className="bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] text-black font-medium px-5 md:px-6 py-2 md:py-3 rounded-full flex items-center gap-2 hover:scale-105 transition text-sm md:text-base">+ Add New Room</Button></Link>
+      </div>
       </div>
 
       <div className="flex flex-col gap-6 md:gap-10">

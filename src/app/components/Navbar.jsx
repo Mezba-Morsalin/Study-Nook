@@ -61,7 +61,7 @@ const Navbar = () => {
 
               <button
                 onClick={() => setDropdown(!dropdown)}
-                className="flex items-center gap-3 bg-[#0b1f3a] px-3 py-2 rounded-full border border-white/10">
+                className="flex items-center gap-3 bg-[#0b1f3a] px-3 py-2 rounded-full border border-white/10 cursor-pointer hover:bg-[#0f2b4f]">
                 <Image src={user?.image || "/assets/default.png"} alt="user" width={40} height={40} className="rounded-full"/>
 
                 <div className="text-left">
