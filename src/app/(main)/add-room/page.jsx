@@ -88,12 +88,12 @@ const AddRoomPage = () => {
         <form onSubmit={onSubmitForm} className="space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-            <Select name="category" isRequired className="w-full">
+            <Select name="category" isRequired className="w-full ">
               <div className="mb-2">
                 <Label className="text-white">Room Category</Label>
               </div>
 
-              <Select.Trigger className="rounded-2xl">
+              <Select.Trigger className="rounded-2xl text-white bg-white/5 border border-white/10">
                 <Select.Value placeholder="Select category" />
                 <Select.Indicator />
               </Select.Trigger>
@@ -137,32 +137,32 @@ const AddRoomPage = () => {
 
             <TextField name="buildingName" isRequired>
               <Label className="text-white mb-2">Building Name</Label>
-              <Input placeholder="Engineering Building" className="rounded-2xl" />
+              <Input placeholder="Engineering Building" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
             <TextField name="capacity" type="number" isRequired>
               <Label className="text-white mb-2">Capacity</Label>
-              <Input type="number" placeholder="16" className="rounded-2xl" />
+              <Input type="number" placeholder="16" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
             <TextField name="SelectFloor" type="number" isRequired>
               <Label className="text-white mb-2">Select Floor Number</Label>
-              <Input type="number" placeholder="8" className="rounded-2xl" />
+              <Input type="number" placeholder="8" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
             <TextField name="price" type="number">
               <Label className="text-white mb-2">Booking Price</Label>
-              <Input type="number" placeholder="10" className="rounded-2xl" />
+              <Input type="number" placeholder="10" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
             <div className="md:col-span-2">
               <TextField name="imageUrl" isRequired>
                 <Label className="text-white mb-2">Room Image URL</Label>
-                <Input type="url" placeholder="https://..." className="rounded-2xl" />
+                <Input type="url" placeholder="https://..." className="rounded-2xl text-white bg-white/5 border border-white/10" />
                 <FieldError />
               </TextField>
             </div>
@@ -230,7 +230,7 @@ const AddRoomPage = () => {
                 <Label className="text-white mb-2">Description</Label>
                 <TextArea
                   placeholder="Describe room facilities and environment..."
-                  className="rounded-3xl w-full h-34"
+                  className="rounded-3xl w-full h-34 text-white bg-white/5 border border-white/10"
                 />
                 <FieldError />
               </TextField>

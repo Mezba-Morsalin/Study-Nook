@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { format } from "date-fns";
 import { headers } from "next/headers";
 import Image from "next/image";
 import React from "react";
@@ -290,7 +291,7 @@ const ProfilePage = async () => {
                     </p>
 
                     <p className="text-sm text-white/80">
-                      {booking.bookingDate}
+                      {booking.bookingDate ? format(new Date(booking.bookingDate), "dd MMMM yyyy") : "No Date"}
                     </p>
                   </div>
 
