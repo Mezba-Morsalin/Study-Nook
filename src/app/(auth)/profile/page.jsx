@@ -14,6 +14,11 @@ import {
   FaDollarSign,
 } from "react-icons/fa";
 
+export const metadata = {
+    title : "StudyNook - Profile",
+    description : "Profile"
+}
+
 const ProfilePage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -37,16 +42,15 @@ const ProfilePage = async () => {
       headers : await headers()
     })
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,{
-        headers : {
-        authorization : `Bearer ${token}`
-        }
-            },
-      {
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,
+  {
+    method: "GET",
+    cache: "no-store",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     if (!res.ok) {
       throw new Error("Failed to fetch bookings");
@@ -71,6 +75,14 @@ const ProfilePage = async () => {
         <p className="text-white/80 mt-2">
           You have not made any room bookings yet.
         </p>
+        <div className="relative w-24 h-24 mx-auto mt-8">
+  <Image
+    src={user?.userImage || "/default-user.png"}
+    alt={user?.userName || "User"}
+    fill
+    className="rounded-full object-cover border-4 border-cyan-100"
+  />
+</div>
       </div>
     );
   }
@@ -99,7 +111,7 @@ const ProfilePage = async () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      {/* Header */}
+
       <div className="mb-10">
         <h1 className="text-4xl font-bold text-white">
           My Profile
@@ -111,7 +123,7 @@ const ProfilePage = async () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Profile Card */}
+
         <div className="bg-[#061a3a] border border-[#335483] rounded-2xl shadow-sm p-8">
           <div className="flex flex-col items-center">
             <div className="relative w-32 h-32">

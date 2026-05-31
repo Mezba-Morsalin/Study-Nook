@@ -13,6 +13,11 @@ import { AiFillDollarCircle } from "react-icons/ai";
 import CancelBookings from "@/app/components/CancelBookings";
 import { Button } from "@heroui/react";
 
+export const metadata = {
+    title : "StudyNook - Bookings",
+    description : "Bookings"
+}
+
 const MyBookingPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),

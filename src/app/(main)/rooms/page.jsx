@@ -1,6 +1,12 @@
 import Room from '@/app/components/Room';
+import { title } from 'framer-motion/client';
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
+
+export const metadata = {
+    title : "StudyNook - Rooms",
+    description : "rooms"
+}
 
 const page = async ({searchParams}) => {
     const params = await searchParams;
