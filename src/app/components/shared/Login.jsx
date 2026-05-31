@@ -122,7 +122,7 @@ const Login = () => {
 
       <div className="flex gap-2">
         <Button 
-          className='w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(251,191,36,0.35)] rounded-2xl py-6'
+          className='w-full bg-linear-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_0_30px_rgba(251,191,36,0.35)] rounded-2xl py-6'
           type="submit"
         >
           Login
