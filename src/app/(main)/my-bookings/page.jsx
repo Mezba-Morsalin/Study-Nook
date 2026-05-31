@@ -27,9 +27,16 @@ const MyBookingPage = async () => {
       </div>
     );
   }
+ const {token} = await auth.api.getToken({
+       headers : await headers()
+     })
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,{
+      headers : {
+                authorization : `Bearer ${token}`
+      }
+    },
     {
       cache: "no-store",
     }
@@ -38,7 +45,7 @@ const MyBookingPage = async () => {
   if (!res.ok) {
     return (
       <div className="w-11/12 mx-auto py-20 text-center">
-        <h2 className="text-red-400 text-xl">Failed to load bookings</h2>
+        <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">Failed to load bookings</h2>
       </div>
     );
   }

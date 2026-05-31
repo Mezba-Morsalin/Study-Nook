@@ -1,5 +1,6 @@
 "use client"
 
+import { authClient } from '@/lib/auth-client';
 import { Button, Checkbox, CheckboxGroup, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -36,7 +37,7 @@ const EditRoom = ({room}) => {
         facilities,
     };
 
-
+    const {data : tokenData } = await authClient.token()
     try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${room._id}`,
@@ -44,6 +45,7 @@ const EditRoom = ({room}) => {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
+          authorization : `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(finalData),
       }

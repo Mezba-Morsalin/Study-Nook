@@ -75,16 +75,19 @@ const BookRoom = ({ room }) => {
       totalPrice,
     };
 
+    const {data : tokenData} = await authClient.token()
+
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
         method : "POST",
         headers : {
-          "Content-type" : "application/json"
+          "Content-type" : "application/json",
+          authorization :  `Bearer ${tokenData?.token}`
         },
         body : JSON.stringify(bookingData)
       });
       const data = await res.json()
-      console.log(data)
+
 
       if(data?.acknowledged) {
         toast.success(`${room.categoryName} Booking Successful`)

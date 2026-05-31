@@ -15,6 +15,7 @@ import {
 } from "@heroui/react";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 const AddRoomPage = () => {
 
@@ -29,7 +30,8 @@ const AddRoomPage = () => {
     { id: "research", name: "Research Room" },
     { id: "soloStudy", name: "Solo Study Room" },
     { id: "discussion", name: "Discussion Room" },
-    { id: "yoga", name : "Yoga / Meditation Room"}
+    { id: "yoga", name : "Yoga / Meditation Room"},
+    { id: "residence", name : "Scholars Residence"},
   ];
 
   const onSubmitForm =async (e) => {
@@ -50,25 +52,36 @@ const AddRoomPage = () => {
       categoryName: selectedCategory?.name,
     };
 
-    console.log(finalData);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
+
+    const {data : tokenData} = await authClient.token()
+
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
       method : 'POST',
       headers :{
-        "Content-type" : "application/json"
+        "Content-type" : "application/json",
+        authorization : `Bearer ${tokenData?.token}`
       },
       body : JSON.stringify(finalData)
     })
 
     const room = await res.json();
 
-    console.log(room)
 
     if(room) {
       toast.success("Room Added Successfully");
       setTimeout(()=> {
         router.push('/rooms')
       }, 1000)
+    }
+    else {
+      toast.error("Failed to add room");
+    }
+    } catch (error) {
+      toast.error("Something Went Wrong")
+      return
     }
   };
 
@@ -134,6 +147,9 @@ const AddRoomPage = () => {
 
                   <ListBox.Item className='hover:text-black' id="yoga" textValue="Yoga / Meditation Room">
                     Yoga / Meditation Room
+                  </ListBox.Item>
+                  <ListBox.Item className='hover:text-black' id="residence" textValue="Scholars Residence">
+                    Scholars Residence
                   </ListBox.Item>
                 </ListBox>
               </Select.Popover>

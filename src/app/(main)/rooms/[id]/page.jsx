@@ -9,12 +9,22 @@ import { LuLayers3 } from 'react-icons/lu';
 import { TbCalendarStats } from 'react-icons/tb';
 import BookRoom from '@/app/components/BookRoom';
 import EditRoom from '@/app/components/EditRoom';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const RoomDetailsPage = async ({ params }) => {
   const { id } = await params;
 
+  const {token} = await auth.api.getToken({
+    headers : await headers()
+  })
+
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,{
+      headers : {
+        authorization : `Bearer ${token}`
+      }
+    },
     {
       cache: 'no-store',
     }

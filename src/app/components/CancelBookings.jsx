@@ -1,4 +1,5 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -9,6 +10,9 @@ const CancelBookings = ({booking}) => {
     const router = useRouter()
 
     const handleDelete = async() =>{
+
+      const {data : tokenData} = await authClient.token()
+
         try {
              const id = booking?._id;
 
@@ -18,11 +22,13 @@ const CancelBookings = ({booking}) => {
       }
 
             const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${id}`, {
-                method : "DELETE"
+                method : "DELETE",
+                headers : {
+                  authorization : `Bearer ${tokenData?.token}`
+                }
             });
 
             const data = await res.json();
-            console.log(data)
 
             if(data?.deletedCount > 0) {
                 toast.success(`${booking.roomName} Booking Cancel Successfully`)

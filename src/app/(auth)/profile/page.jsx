@@ -24,16 +24,25 @@ const ProfilePage = async () => {
   if (!user?.id) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        User not found
+       <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">
+         User not found
+       </h2>
       </div>
     );
   }
 
   let userData = [];
 
+  const {token} = await auth.api.getToken({
+      headers : await headers()
+    })
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user.id}`,{
+        headers : {
+        authorization : `Bearer ${token}`
+        }
+            },
       {
         cache: "no-store",
       }
@@ -49,7 +58,7 @@ const ProfilePage = async () => {
 
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        Failed to load profile data.
+        <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">Error 505 Failed to load profile data.</h2>
       </div>
     );
   }
@@ -58,7 +67,7 @@ const ProfilePage = async () => {
     return (
       <div className="min-h-[60vh] flex flex-col justify-center items-center">
         <FaCalendarAlt className="text-5xl text-white mb-4" />
-        <h2 className="text-2xl font-semibold">No Bookings Found</h2>
+        <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">No Bookings Found</h2>
         <p className="text-white/80 mt-2">
           You have not made any room bookings yet.
         </p>
