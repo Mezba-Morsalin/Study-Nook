@@ -88,9 +88,9 @@ const Navbar = () => {
                       My Bookings
                     </Link>
 
-                    <button onClick={handleSignOut} className="w-full text-left px-4 py-3 text-red-400 hover:bg-white/10">
+                    <Link href={'/'}><button onClick={handleSignOut} className="w-full text-left px-4 py-3 text-red-400 hover:bg-white/10">
                       Sign Out
-                    </button>
+                    </button></Link>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -152,9 +152,10 @@ const Navbar = () => {
                       Ny Bookings
                     </Link>
 
+                    <Link href={'/'}>
                     <button onClick={handleSignOut} className="px-4 py-3 text-red-400 cursor-pointer hover:text-red-500">
                       Sign Out
-                    </button>
+                    </button></Link>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-3">

@@ -4,10 +4,11 @@ import Link from 'next/link';
 import React from 'react';
 import { MdLocationOn } from 'react-icons/md';
 import { RiArrowLeftLongFill } from 'react-icons/ri';
-import { FiUsers } from 'react-icons/fi';
+import { FiEdit, FiUsers } from 'react-icons/fi';
 import { LuLayers3 } from 'react-icons/lu';
 import { TbCalendarStats } from 'react-icons/tb';
 import BookRoom from '@/app/components/BookRoom';
+import EditRoom from '@/app/components/EditRoom';
 
 const RoomDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -24,13 +25,18 @@ const RoomDetailsPage = async ({ params }) => {
   return (
     <div className='w-11/12 lg:w-10/12 mx-auto py-14'>
       
-      <div className='mb-10'>
-        <Link href='/rooms'>
+      <div className='mb-10 flex justify-between'>
+        <div>
+          <Link href='/rooms'>
           <Button className=' bg-[#071228] border border-[#1f3b63] text-white hover:bg-[#0c1d3a] transition-all duration-300 rounded-full px-5'>
             <RiArrowLeftLongFill className='text-xl' />
             Back
           </Button>
         </Link>
+        </div>
+        <div>
+          <EditRoom room = {room}></EditRoom>
+        </div>
       </div>
 
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>

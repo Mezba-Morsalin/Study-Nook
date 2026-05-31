@@ -1,94 +1,93 @@
-"use client";
+"use client"
 
-import React from "react";
-import {
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  FieldError,
-  Input,
-  Label,
-  ListBox,
-  TextArea,
-  TextField,
-  Select,
-} from "@heroui/react";
-import toast, { Toaster } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { Button, Checkbox, CheckboxGroup, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { BiEdit } from 'react-icons/bi';
+import { FiEdit } from 'react-icons/fi';
 
-const AddRoomPage = () => {
+const EditRoom = ({room}) => {
+    const router = useRouter();
+    const updateRoom = async (e) => {
+        e.preventDefault();
 
-  const router = useRouter()
+        const formData = new FormData(e.currentTarget);
 
-  const categories = [
-    { id: "quiet", name: "Quiet Study Room" },
-    { id: "group", name: "Group Study Room" },
-    { id: "computer", name: "Computer Lab" },
-    { id: "library", name: "Library Zone" },
-    { id: "collaboration", name: "Collaboration Zone" },
-    { id: "research", name: "Research Room" },
-    { id: "soloStudy", name: "Solo Study Room" },
-    { id: "discussion", name: "Discussion Room" },
-    { id: "yoga", name : "Yoga / Meditation Room"}
-  ];
+        const data = Object.fromEntries(formData.entries());
 
-  const onSubmitForm =async (e) => {
-    e.preventDefault();
+        let facilities = formData.getAll("facilities");
 
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+        if (!Array.isArray(facilities) || facilities.length === 0) {
+        const raw = formData.get("facilities");
 
-    const facilities = formData.getAll("facilities");
-
-    const selectedCategory = categories.find(
-      (c) => c.id === data.category
-    );
+        if (typeof raw === "string") {
+        facilities = raw
+        .split(",")
+        .map((f) => f.trim())
+        .filter(Boolean);
+        } else {
+      facilities = [];
+        }
+    }
 
     const finalData = {
-      ...data,
-      facilities,
-      categoryName: selectedCategory?.name,
+        ...data,
+        facilities,
     };
 
-    console.log(finalData);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
-      method : 'POST',
-      headers :{
-        "Content-type" : "application/json"
-      },
-      body : JSON.stringify(finalData)
-    })
+    try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${room._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(finalData),
+      }
+    );
 
-    const room = await res.json();
+    const updateRoomData = await res.json();
 
-    console.log(room)
-
-    if(room) {
-      toast.success("Room Added Successfully");
-      setTimeout(()=> {
-        router.push('/rooms')
-      }, 1000)
+    if (updateRoomData.modifiedCount > 0) {
+      toast.success("Room Updated Successfully");
+      router.refresh();
+    } else {
+      toast.error("Failed to update room");
     }
-  };
-
-  return (
-    <div className="min-h-screen bg-[#071228] py-16 px-5">
-      <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-[0_0_40px_rgba(251,191,36,0.08)]">
-
-        <div className="mb-10 text-center space-y-3">
-          <h2 className="text-3xl md:text-5xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent">
-            Add New Study Room
-          </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
-            Create and manage modern study spaces for students.
-          </p>
-        </div>
-
-        <form onSubmit={onSubmitForm} className="space-y-8">
+  } catch (error) {
+    console.log(error);
+    toast.error("Something Went Wrong");
+  }
+};
+    return (
+        <div>
+            <Modal>
+      <Button className=' bg-[#071228] border border-[#1f3b63] text-white hover:bg-[#0c1d3a] transition-all duration-300 rounded-full px-5'>
+            <FiEdit className='text-xl' />
+            Edit
+          </Button>
+      <Modal.Backdrop>
+        <Modal.Container placement="auto">
+          <Modal.Dialog  className="max-w-5xl bg-[#071228] border border-[#1f3b63] text-white">
+            <Modal.CloseTrigger />
+            <Modal.Header>
+              <Modal.Icon className="bg-accent-soft text-white">
+                <BiEdit/>
+              </Modal.Icon>
+              <Modal.Heading className='text-3xl md:text-4xl font-bold bg-linear-to-r from-white via-yellow-300 to-amber-500 bg-clip-text text-transparent text-center'>Update Room Details</Modal.Heading>
+              <p className="mt-1.5 text-sm text-white/80 leading-5 text-center">
+                Modify room information, facilities, pricing, and availability settings.
+              </p>
+            </Modal.Header>
+            <Modal.Body className="p-6">
+              <Surface variant="default">
+                <form onSubmit={updateRoom} className="space-y-8 bg-[#071228]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-            <Select name="category" isRequired className="w-full ">
+            <Select name="category" defaultSelectedKeys={[room?.category]} isRequired className="w-full ">
               <div className="mb-2">
                 <Label className="text-white">Room Category</Label>
               </div>
@@ -131,40 +130,36 @@ const AddRoomPage = () => {
                   <ListBox.Item className='hover:text-black' id="discussion" textValue="Discussion Room">
                     Discussion Room
                   </ListBox.Item>
-
-                  <ListBox.Item className='hover:text-black' id="yoga" textValue="Yoga / Meditation Room">
-                    Yoga / Meditation Room
-                  </ListBox.Item>
                 </ListBox>
               </Select.Popover>
             </Select>
 
-            <TextField name="buildingName" isRequired>
-              <Label className="text-white mb-2">Building Name</Label>
-              <Input placeholder="Engineering Building" className="rounded-2xl text-white bg-white/5 border border-white/10" />
-              <FieldError />
+            <TextField name="buildingName" defaultValue={room?.buildingName} isRequired>
+            <Label className="text-white mb-2">Building Name</Label>
+            <Input placeholder="Engineering Building" className="rounded-2xl text-white bg-white/5 border border-white/10"/>
+                <FieldError />
             </TextField>
 
-            <TextField name="capacity" type="number" isRequired>
+            <TextField defaultValue={room?.capacity} name="capacity" type="number" isRequired>
               <Label className="text-white mb-2">Capacity</Label>
               <Input type="number" placeholder="16" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
-            <TextField name="SelectFloor" type="number" isRequired>
+            <TextField defaultValue={room?.SelectFloor} name="SelectFloor" type="number" isRequired>
               <Label className="text-white mb-2">Select Floor Number</Label>
               <Input type="number" placeholder="8" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
-            <TextField name="price" type="number">
+            <TextField defaultValue={room?.price} name="price" type="number">
               <Label className="text-white mb-2">Booking Price</Label>
               <Input type="number" placeholder="10" className="rounded-2xl text-white bg-white/5 border border-white/10" />
               <FieldError />
             </TextField>
 
             <div className="md:col-span-2">
-              <TextField name="imageUrl" isRequired>
+              <TextField name="imageUrl" defaultValue={room?.imageUrl} isRequired>
                 <Label className="text-white mb-2">Room Image URL</Label>
                 <Input type="url" placeholder="https://..." className="rounded-2xl text-white bg-white/5 border border-white/10" />
                 <FieldError />
@@ -175,9 +170,7 @@ const AddRoomPage = () => {
               <Label className="text-white mb-3 block">Facilities</Label>
 
               <CheckboxGroup
-                name="facilities"
-                className="grid grid-cols-2 md:grid-cols-3 gap-3"
-              >
+                name="facilities" defaultValue={room?.facilities || []} className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <Checkbox value="wifi">
                   <Checkbox.Control>
                     <Checkbox.Indicator />
@@ -230,7 +223,7 @@ const AddRoomPage = () => {
             </div>
 
             <div className="md:col-span-2">
-              <TextField name="description" isRequired>
+              <TextField  name="description" defaultValue={room?.description} isRequired>
                 <Label className="text-white mb-2">Description</Label>
                 <TextArea
                   placeholder="Describe room facilities and environment..."
@@ -245,13 +238,20 @@ const AddRoomPage = () => {
             type="submit"
             className="w-full rounded-full bg-linear-to-r from-yellow-400 to-amber-500 text-[#071228] font-semibold py-7"
           >
-            Add Room
+            Update Room
           </Button>
         </form>
-      </div>
-      <Toaster/>
-    </div>
-  );
+              </Surface>
+            </Modal.Body>
+            <Modal.Footer>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </Modal.Container>
+      </Modal.Backdrop>
+    </Modal>
+    <Toaster/>
+        </div>
+    );
 };
 
-export default AddRoomPage;
+export default EditRoom;

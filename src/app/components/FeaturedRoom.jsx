@@ -48,7 +48,7 @@ const FeaturedRoom = ({room}) => {
                 </div>
         
                 <div className="flex flex-wrap gap-2">
-                  {room.facilities?.map((facility, index) => (
+                  {room.facilities.map((facility, index) => (
                     <span
                       key={index}
                       className="text-xs px-3 py-1 rounded-full bg-[#082657] text-white/80 border border-white/10 hover:bg-[#0b2f6b] transition"
