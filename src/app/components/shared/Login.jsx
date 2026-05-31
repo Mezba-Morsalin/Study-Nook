@@ -150,7 +150,7 @@ const Login = () => {
       </Button>
     </div>
 
-    <div className='flex gap-1.5 justify-center items-center'>
+    <div className='flex flex-col md:flex-row gap-1.5 justify-center items-center'>
       <p className="text-white/50">
         Don’t have an account?
       </p>

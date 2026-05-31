@@ -175,7 +175,7 @@ const handleGoogleLogin = async () => {
       </Button>
     </div>
 
-        <div className='flex gap-1.5 justify-center items-center'>
+        <div className='flex flex-col md:flex-row gap-1.5 justify-center items-center'>
             
             <p className="text-white/50">
               Already Have an Account?
