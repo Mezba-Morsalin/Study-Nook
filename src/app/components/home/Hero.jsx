@@ -26,7 +26,7 @@ const Hero = () => {
                         </h2>
 
                         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className='text-white/80 text-lg leading-7 mb-10'>
-                            Discover and reserve quiet study rooms, group discussion zones, and collaboration spaces instantly. No more wandering around campus looking for an empty room—secure your study nook in just a few clicks!
+                            Discover and reserve quiet study rooms, group discussion zones, and collaboration spaces instantly . No more wandering around campus looking for an empty room—secure your study nook in just a few clicks!
                         </motion.p>
                     <div className='flex flex-col md:flex-row gap-4'>
                         <Link href={'/rooms'}><Button className={'text-black bg-linear-to-r from-[#FFD700] via-[#FFC107] to-[#FFB300] transition-transform duration-300 ease-out hover:scale-105 flex items-center group text-base p-5 hover:shadow-[0_0px_30px_rgba(245,158,11,0.35)]'}>Explore Rooms <LuMoveRight className="transition-transform duration-300 group-hover:translate-x-1" /></Button></Link>
