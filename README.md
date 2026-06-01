@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏡 StudyNook - Room Booking Platform
 
-## Getting Started
+StudyNook is a modern full-stack room booking platform where users can browse available rooms, view detailed information, book rooms, manage bookings, and add their own room listings. The application is built with Next.js, MongoDB, Express.js, and secured using JWT Authentication.
 
-First, run the development server:
+---
+
+
+<p align="center">
+  <img src="./public/assets/ss.png.png" alt="StudyNook Banner" width="100%">
+</p>
+
+<h1 align="center">🏡 StudyNook</h1>
+
+
+
+## 🚀 Live Demo
+
+🔗 Live Site: https://study-nook-sigma.vercel.app
+
+
+---
+
+## 📸 Project Overview
+
+StudyNook allows users to:
+
+- Browse available rooms
+- View room details
+- Add new room listings
+- Book rooms
+- Manage personal bookings
+- Cancel bookings
+- Secure authentication and authorization
+- Responsive design for all devices
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication & Security
+
+- Better Auth Authentication
+- JWT Token Verification
+- Protected Routes
+- Secure API Endpoints
+- Session Management
+
+### 🏠 Room Management
+
+- Add New Room
+- Update Room Information
+- View Room Details
+- Featured Room Section
+
+### 📅 Booking System
+
+- Book Available Rooms
+- View Personal Bookings
+- Cancel Existing Bookings
+- Booking Date Management
+
+### 🎨 User Interface
+
+- Fully Responsive Design
+- Modern UI with Hero UI
+- Smooth Animations using Framer Motion
+- Loading States
+- Custom Error Pages
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+
+- Next.js
+- React.js
+- Tailwind CSS
+- Hero UI
+- Framer Motion
+- React Icons
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+
+### Authentication
+
+- Better Auth
+- JWT Security
+
+### Database
+
+- MongoDB Atlas
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+src
+│
+├── app
+│   ├── (auth)
+│   │   ├── login
+│   │   ├── register
+│   │   └── profile
+│   │
+│   ├── (main)
+│   │   ├── rooms
+│   │   ├── add-room
+│   │   └── my-bookings
+│   │
+│   ├── api
+│   ├── components
+│   ├── layout.jsx
+│   └── page.js
+│
+├── lib
+│   ├── auth.js
+│   └── auth-client.js
+│
+└── middleware/proxy.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 🔒 Security Implementation
 
-To learn more about Next.js, take a look at the following resources:
+### JWT Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Token generation after login
+- Protected API routes
+- Middleware verification
+- Unauthorized access prevention
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Better Auth
 
-## Deploy on Vercel
+- Secure session handling
+- Authentication management
+- User profile management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 👨‍💻 Author
+
+**Mezba-Morsalin**
+
+GitHub: https://github.com/Mezba-Morsalin
+
+LinkedIn: https://linkedin.com/in/mezba-morsalin
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
