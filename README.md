@@ -6,7 +6,7 @@ StudyNook is a modern full-stack room booking platform where users can browse av
 
 
 <p align="center">
-  <img src="./public/assets/ss.png.png" alt="StudyNook Banner" width="100%">
+  <img width="1904" height="757" alt="ss" src="https://github.com/user-attachments/assets/ab2782ba-1abe-4357-b1d2-37d9544b2699" />
 </p>
 
 <h1 align="center">🏡 StudyNook</h1>
