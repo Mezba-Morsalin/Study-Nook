@@ -10,7 +10,7 @@ import { HiMiniArrowRightStartOnRectangle } from 'react-icons/hi2';
 
 const Hero = () => {
     return (
-        <div className="bg-[url(/assets/bg.svg)] bg-cover bg-center h-[95vh] lg:h-[70vh]">
+        <div className="bg-[url(/assets/bg.svg)] bg-cover bg-center h-[120vh] lg:h-[70vh]">
             <div className='w-11/12 lg:w-10/12 mx-auto p-5 md:p-0'>
                 <div className='flex flex-col gap-12 lg:flex-row justify-between items-center py-10 lg:py-16'>
 
