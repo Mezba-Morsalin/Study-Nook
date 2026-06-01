@@ -21,13 +21,11 @@ const RoomDetailsPage = async ({ params }) => {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${id}`,{
+      cache : "no-store",
       headers : {
         authorization : `Bearer ${token}`
       }
     },
-    {
-      cache: 'no-store',
-    }
   );
 
   const room = await res.json();

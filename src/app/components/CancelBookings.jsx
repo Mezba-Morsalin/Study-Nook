@@ -23,6 +23,7 @@ const CancelBookings = ({booking}) => {
 
             const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${id}`, {
                 method : "DELETE",
+                cache: "no-store",
                 headers : {
                   authorization : `Bearer ${tokenData?.token}`
                 }

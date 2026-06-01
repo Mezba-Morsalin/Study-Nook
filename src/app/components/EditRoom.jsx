@@ -43,6 +43,7 @@ const EditRoom = ({room}) => {
       `${process.env.NEXT_PUBLIC_SERVER_URL}/rooms/${room._id}`,
       {
         method: "PATCH",
+        cache: "no-store",
         headers: {
           "Content-type": "application/json",
           authorization : `Bearer ${tokenData?.token}`
@@ -131,6 +132,15 @@ const EditRoom = ({room}) => {
 
                   <ListBox.Item className='hover:text-black' id="discussion" textValue="Discussion Room">
                     Discussion Room
+                  </ListBox.Item>
+                  <ListBox.Item className='hover:text-black' id="yoga" textValue="Yoga / Meditation Room">
+                    Yoga / Meditation Room
+                  </ListBox.Item>
+                  <ListBox.Item className='hover:text-black' id="yoga" textValue="Yoga / Meditation Room">
+                    Yoga / Meditation Room
+                  </ListBox.Item>
+                  <ListBox.Item className='hover:text-black' id="residence" textValue="Scholars Residence">
+                    Scholars Residence
                   </ListBox.Item>
                 </ListBox>
               </Select.Popover>

@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { LuMoveRight } from 'react-icons/lu';
 
 const FeatureRooms = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`, {
+    cache: "no-store",
+  })
     const rooms = await res.json()
     return (
         <div className='bg-[#061a3a] overflow-hidden'>

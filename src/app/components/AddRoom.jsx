@@ -58,6 +58,7 @@ const AddRoom = () => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/rooms`, {
       method : 'POST',
+      cache: "no-store",
       headers :{
         "Content-type" : "application/json",
         authorization : `Bearer ${tokenData?.token}`
